@@ -66,7 +66,7 @@ _ = request(.GET, stringURL)
     .flatMap {
         $0
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
             .rx_JSON()
     }
     .observeOn(MainScheduler.instance)
@@ -77,7 +77,7 @@ _ = request(.GET, stringURL)
     .flatMap {
         $0
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
             .rx_progress()
     }
     .observeOn(MainScheduler.instance)
@@ -88,7 +88,7 @@ _ = upload(try! URLRequest(.GET, stringURL), data: NSData())
     .flatMap {
         $0
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
             .rx_progress()
     }
     .observeOn(MainScheduler.instance)
@@ -101,7 +101,7 @@ _ = request(.GET, stringURL)
     .flatMap { request -> Observable<(NSData?, RxProgress)> in
         let validatedRequest = request
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
         
         let dataPart = validatedRequest
             .rx_data()
@@ -140,7 +140,7 @@ _ = manager.rx_request(.GET, stringURL)
     .flatMap {
         $0
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
             .rx_string()
     }
     .observeOn(MainScheduler.instance)
@@ -151,7 +151,7 @@ _ = manager.rx_request(.GET, stringURL)
     .flatMap {
         $0
             .validate(statusCode: 200 ..< 300)
-            .validate(contentType: ["text/json"])
+            .validate(contentType: ["application/json"])
             .rx_responseString()
     }
     .observeOn(MainScheduler.instance)
